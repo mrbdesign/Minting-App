@@ -2,6 +2,7 @@
 
 import { TransactionButton, MediaRenderer, useActiveAccount } from "thirdweb/react";
 import { claimTo } from "thirdweb/extensions/erc721";
+import { claimTo as claimTo1155 } from "thirdweb/extensions/erc1155";
 import { CustomConnectButton } from "./CustomConnectButton";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -16,7 +17,6 @@ import type { ThirdwebContract } from "thirdweb";
 import { client } from "@/lib/thirdwebClient";
 import React from "react";
 import { toast } from "sonner";
-import { Skeleton } from "./ui/skeleton";
 
 type Props = {
   contract: ThirdwebContract;
@@ -51,6 +51,22 @@ export function NftMint(props: Props) {
     if (!Number.isNaN(value)) {
       setQuantity(Math.min(Math.max(1, value)));
     }
+  };
+
+  const getClaimTransaction = () => {
+    if (props.isERC1155) {
+      return claimTo1155({
+        contract: props.contract,
+        to: customAddress || account?.address || "",
+        quantity: BigInt(quantity),
+        tokenId: props.tokenId,
+      });
+    }
+    return claimTo({
+      contract: props.contract,
+      to: customAddress || account?.address || "",
+      quantity: BigInt(quantity),
+    });
   };
 
   if (props.pricePerToken === null || props.pricePerToken === undefined) {
@@ -151,13 +167,7 @@ export function NftMint(props: Props) {
         <CardFooter>
           {account ? (
             <TransactionButton
-              transaction={() =>
-                claimTo({
-                  contract: props.contract,
-                  to: customAddress || account?.address || "",
-                  quantity: BigInt(quantity),
-                })
-              }
+              transaction={getClaimTransaction}
               style={{
                 backgroundColor: "black",
                 color: "white",

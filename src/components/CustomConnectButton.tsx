@@ -40,7 +40,7 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
         }}
         connectModal={{
           size: "compact",
-          title: "👻BOO!",
+          title: "🔪🔪🔪",
           showThirdwebBranding: false,
         }}
       />
