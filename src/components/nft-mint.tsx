@@ -92,7 +92,6 @@ export function NftMint(props: Props) {
             </div>
           </div>
 
-          {/* Add padding above the CustomConnectButton for mobile */}
           <div className="sm:hidden block mb-4 pt-[50px]">
             <CustomConnectButton />
           </div>
@@ -147,7 +146,7 @@ export function NftMint(props: Props) {
               htmlFor="custom-address"
               className={`${useCustomAddress ? "" : "text-gray-400"} cursor-pointer`}
             >
-             Mint to a custom address
+              Mint to a custom address
             </Label>
           </div>
           {useCustomAddress && (
@@ -197,7 +196,6 @@ export function NftMint(props: Props) {
         </a>
         .
       </p>
-      
       {true && (
         <Toast className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-md">
           Successfully minted {quantity} NFT{quantity > 1 ? "s" : ""}
