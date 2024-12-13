@@ -192,12 +192,6 @@ export function NftMint(props: Props) {
         </a>
         .
       </p>
-      {true && (
-        <Toast className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded-md">
-          Successfully minted {quantity} NFT{quantity > 1 ? "s" : ""}
-          {useCustomAddress && customAddress ? ` to ${customAddress}` : ""}!
-        </Toast>
-      )}
     </div>
   );
 }
