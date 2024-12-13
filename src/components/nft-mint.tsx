@@ -10,10 +10,10 @@ import { Toast } from "@/components/ui/toast";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Loader2, Minus, Plus, Moon, Sun } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { ThirdwebContract } from "thirdweb";
-import { ClaimButton, MediaRenderer, NFT, useActiveAccount } from "thirdweb/react";
+import { MediaRenderer, useActiveAccount } from "thirdweb/react";
 import { client } from "@/lib/thirdwebClient";
 import React from "react";
 import { toast } from "sonner";
@@ -32,7 +32,6 @@ type Props = {
 };
 
 export function NftMint(props: Props) {
-  console.log(props);
   const [isMinting, setIsMinting] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [useCustomAddress, setUseCustomAddress] = useState(false);
@@ -69,24 +68,12 @@ export function NftMint(props: Props) {
       <Card className="w-full max-w-md">
         <CardContent className="pt-6">
           <div className="aspect-square overflow-hidden rounded-lg mb-4 relative">
-            {props.isERC1155 ? (
-              <NFT contract={props.contract} tokenId={props.tokenId}>
-                <React.Suspense
-                  fallback={<Skeleton className="w-full h-full object-cover" />}
-                >
-                  <NFT.Media className="w-full h-full object-cover" />
-                </React.Suspense>
-              </NFT>
-            ) : (
-              <MediaRenderer
-                client={client}
-                className="w-full h-full object-cover"
-                alt=""
-                src={
-                  props.contractImage || "/placeholder.svg?height=400&width=400"
-                }
-              />
-            )}
+            <MediaRenderer
+              client={client}
+              className="w-full h-full object-cover"
+              alt=""
+              src={props.contractImage || "/placeholder.svg?height=400&width=400"}
+            />
             <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-full text-sm font-semibold">
               {props.pricePerToken === 0 ? "FREE" : `${props.pricePerToken} ${props.currencySymbol}/each`}
             </div>
