@@ -8,23 +8,26 @@ import { ToastProvider } from "@/components/ui/toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-	title: "HAPPY HALLOWEEN",
-	description: "PIXEL WORLD Minting Nov.11",
+  title: "HAPPY FRIDAY",
+  description: "It's Friday Somewhere!",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default function RootLayout({
-	children,
+  children,
 }: Readonly<{
-	children: React.ReactNode;
+  children: React.ReactNode;
 }>) {
-	return (
-		<html lang="en">
-			<body className={inter.className}>
-				<ToastProvider>
-					<Toaster position="bottom-center" />
-					<ThirdwebProvider>{children}</ThirdwebProvider>
-				</ToastProvider>
-			</body>
-		</html>
-	);
+  return (
+    <html lang="en">
+      <body className={`${inter.className} bg-black`}>
+        <ToastProvider>
+          <Toaster position="bottom-center" />
+          <ThirdwebProvider>{children}</ThirdwebProvider>
+        </ToastProvider>
+      </body>
+    </html>
+  );
 }
