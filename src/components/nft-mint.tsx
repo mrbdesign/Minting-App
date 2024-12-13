@@ -1,6 +1,6 @@
 "use client";
 
-import { TransactionButton } from "thirdweb/react";
+import { TransactionButton, MediaRenderer, useActiveAccount } from "thirdweb/react";
 import { claimTo } from "thirdweb/extensions/erc721";
 import { CustomConnectButton } from "./CustomConnectButton";
 import { useState } from "react";
@@ -13,7 +13,6 @@ import { Switch } from "@/components/ui/switch";
 import { Minus, Plus } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { ThirdwebContract } from "thirdweb";
-import { MediaRenderer, useActiveAccount } from "thirdweb/react";
 import { client } from "@/lib/thirdwebClient";
 import React from "react";
 import { toast } from "sonner";
