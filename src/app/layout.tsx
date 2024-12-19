@@ -8,8 +8,8 @@ import { ToastProvider } from "@/components/ui/toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "HAPPY FRIDAY",
-  description: "It's Friday Somewhere!",
+  title: "PIXEL SANTA",
+  description: "Happy Holidays!",
   icons: {
     icon: '/favicon.ico',
   },

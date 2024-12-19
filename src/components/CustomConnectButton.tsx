@@ -40,7 +40,7 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
         }}
         connectModal={{
           size: "compact",
-          title: "🔪🔪🔪",
+          title: "🎄Merry Christmas !",
           showThirdwebBranding: false,
         }}
       />
