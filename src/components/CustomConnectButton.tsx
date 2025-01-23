@@ -1,3 +1,5 @@
+"use client";
+
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
 import { darkTheme } from "thirdweb/react";
@@ -21,20 +23,21 @@ interface CustomConnectButtonProps {
 
 export function CustomConnectButton({ className }: CustomConnectButtonProps) {
   return (
-    <ConnectButton
-      client={client}
-      wallets={wallets}
-      theme={darkTheme({
-        colors: { modalBg: "hsl(228, 12%, 8%)" },
-      })}
-      connectModal={{
-        size: "compact",
-        title: "Let's Friggin' Go !",
-        showThirdwebBranding: false,
-        termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
-        privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
-      }}
-      className={className}
-    />
+    <div className={className}>
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        theme={darkTheme({
+          colors: { modalBg: "hsl(228, 12%, 8%)" },
+        })}
+        connectModal={{
+          size: "compact",
+          title: "Let's Friggin' Go !",
+          showThirdwebBranding: false,
+          termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
+          privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
+        }}
+      />
+    </div>
   );
 }
