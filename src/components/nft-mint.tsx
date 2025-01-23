@@ -85,7 +85,7 @@ export function NftMint(props: Props) {
               src="/11.png"
             />
             <div className="absolute top-2 right-2 bg-black bg-opacity-80 text-white px-2 py-1 rounded-full text-sm font-semibold">
-              {props.pricePerToken === 0 ? "50 PERX" : `${props.pricePerToken} ${props.currencySymbol}/each`}
+              {props.pricePerToken === 0 ? "0 PERX" : `${props.pricePerToken} ${props.currencySymbol}/each`}
             </div>
           </div>
 
