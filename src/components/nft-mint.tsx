@@ -7,10 +7,7 @@ import { CustomConnectButton } from "./CustomConnectButton";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Toast } from "@/components/ui/toast";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
 import { Minus, Plus } from "lucide-react";
 import { useTheme } from "next-themes";
 import type { ThirdwebContract } from "thirdweb";
@@ -33,8 +30,6 @@ type Props = {
 export function NftMint(props: Props) {
   const [isMinting, setIsMinting] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [useCustomAddress, setUseCustomAddress] = useState(false);
-  const [customAddress, setCustomAddress] = useState("");
   const { theme, setTheme } = useTheme();
   const account = useActiveAccount();
 
@@ -57,14 +52,14 @@ export function NftMint(props: Props) {
     if (props.isERC1155) {
       return claimTo1155({
         contract: props.contract,
-        to: customAddress || account?.address || "",
+        to: account?.address || "",
         quantity: BigInt(quantity),
         tokenId: props.tokenId,
       });
     }
     return claimTo({
       contract: props.contract,
-      to: customAddress || account?.address || "",
+      to: account?.address || "",
       quantity: BigInt(quantity),
     });
   };
@@ -75,36 +70,37 @@ export function NftMint(props: Props) {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat transition-colors duration-200" style={{backgroundImage: "url('/background.png')"}}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-black transition-colors duration-200">
       <div className="absolute top-4 right-4 sm:block hidden">
-        <CustomConnectButton />
+        <CustomConnectButton className="bg-zinc-900 text-white hover:bg-zinc-800" />
       </div>
 
-      <Card className="w-full max-w-md">
+      <Card className="w-full max-w-md bg-zinc-900 border-zinc-800">
         <CardContent className="pt-6">
           <div className="aspect-square overflow-hidden rounded-lg mb-4 relative">
             <MediaRenderer
               client={client}
               className="w-full h-full object-cover"
-              alt=""
-              src={props.contractImage || "/placeholder.svg?height=400&width=400"}
+              alt={props.displayName}
+              src="/11.png"
             />
-            <div className="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded-full text-sm font-semibold">
-              {props.pricePerToken === 0 ? "FREE" : `${props.pricePerToken} ${props.currencySymbol}/each`}
+            <div className="absolute top-2 right-2 bg-black bg-opacity-80 text-white px-2 py-1 rounded-full text-sm font-semibold">
+              {props.pricePerToken === 0 ? "50 PERX" : `${props.pricePerToken} ${props.currencySymbol}/each`}
             </div>
           </div>
 
           <div className="sm:hidden block mb-4 pt-[50px]">
-            <CustomConnectButton />
+            <CustomConnectButton className="bg-zinc-900 text-white hover:bg-zinc-800" />
           </div>
 
-          <h2 className="text-2xl font-bold mb-2 dark:text-white">
+          <h2 className="text-2xl font-bold mb-2 text-white">
             {props.displayName}
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-4">
+          <p className="text-zinc-400 mb-4">
             {props.description}
           </p>
-          <div className="flex items-center justify-between mb-4">
+
+          <div className="flex items-center justify-start mb-4">
             <div className="flex items-center">
               <Button
                 variant="outline"
@@ -112,7 +108,7 @@ export function NftMint(props: Props) {
                 onClick={decreaseQuantity}
                 disabled={quantity <= 1}
                 aria-label="Decrease quantity"
-                className="rounded-r-none"
+                className="rounded-r-none bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700"
               >
                 <Minus className="h-4 w-4" />
               </Button>
@@ -120,7 +116,7 @@ export function NftMint(props: Props) {
                 type="number"
                 value={quantity}
                 onChange={handleQuantityChange}
-                className="w-28 text-center rounded-none border-x-0 pl-6"
+                className="w-28 text-center rounded-none border-zinc-700 bg-zinc-800 text-white pl-6"
                 min="1"
               />
               <Button
@@ -128,50 +124,23 @@ export function NftMint(props: Props) {
                 size="icon"
                 onClick={increaseQuantity}
                 aria-label="Increase quantity"
-                className="rounded-l-none"
+                className="rounded-l-none bg-zinc-800 border-zinc-700 text-white hover:bg-zinc-700"
               >
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
-            <div className="text-base pr-1 font-semibold dark:text-white">
-              Totally {props.pricePerToken === 0 ? "FREE" : `${props.pricePerToken * quantity} ${props.currencySymbol}`}
-            </div>
           </div>
-
-          <div className="flex items-center space-x-2 mb-4">
-            <Switch
-              id="custom-address"
-              checked={useCustomAddress}
-              onCheckedChange={setUseCustomAddress}
-            />
-            <Label
-              htmlFor="custom-address"
-              className={`${useCustomAddress ? "" : "text-gray-400"} cursor-pointer`}
-            >
-              Mint to a custom address
-            </Label>
-          </div>
-          {useCustomAddress && (
-            <div className="mb-4">
-              <Input
-                id="address-input"
-                type="text"
-                placeholder="Enter recipient address"
-                value={customAddress}
-                onChange={(e) => setCustomAddress(e.target.value)}
-                className="w-full"
-              />
-            </div>
-          )}
         </CardContent>
         <CardFooter>
           {account ? (
             <TransactionButton
               transaction={getClaimTransaction}
               style={{
-                backgroundColor: "black",
+                backgroundColor: "#18181b",
                 color: "white",
                 width: "100%",
+                borderColor: "#27272a",
+                borderWidth: "1px"
               }}
               disabled={isMinting}
               onTransactionSent={() => toast.info("Minting NFT")}
@@ -181,17 +150,10 @@ export function NftMint(props: Props) {
               Mint {quantity} NFT{quantity > 1 ? "s" : ""}
             </TransactionButton>
           ) : (
-            <CustomConnectButton className="w-full" />
+            <CustomConnectButton className="w-full bg-zinc-900 text-white hover:bg-zinc-800" />
           )}
         </CardFooter>
       </Card>
-      <p className="text-center mt-4 text-sm text-white">
-        By clicking 'Mint', you agree to our{' '}
-        <a href="https://www.mrbriandesign.com/terms" target="_blank" rel="noopener noreferrer" className="underline">
-          terms of service
-        </a>
-        .
-      </p>
     </div>
   );
 }
