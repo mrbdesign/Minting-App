@@ -145,21 +145,22 @@ export function NftMint(props: Props) {
             >
               Mint {quantity} NFT{quantity > 1 ? "s" : ""}
             </TransactionButton>
-          ) : (
-            <TransactionButton
-              transaction={getClaimTransaction}
-              style={{
-                backgroundColor: "#000000",
-                color: "white",
-                width: "100%",
-                borderColor: "#27272a",
-                borderWidth: "1px"
-              }}
-              disabled={true}
-            >
-              Connect Wallet to Mint
-            </TransactionButton>
-          )}
+                    ) : (
+                      // Change SOLD OUT to Connect Wallet to Mint
+                      <TransactionButton
+                        transaction={getClaimTransaction}
+                        style={{
+                          backgroundColor: "#000000",
+                          color: "white",
+                          width: "100%",
+                          borderColor: "#27272a",
+                          borderWidth: "1px"
+                        }}
+                        disabled={true}
+                      >
+                        SOLD OUT
+                      </TransactionButton>
+                    )}          
         </CardFooter>
       </Card>
     </div>
