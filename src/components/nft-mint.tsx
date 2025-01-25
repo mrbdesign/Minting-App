@@ -71,13 +71,9 @@ export function NftMint(props: Props) {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-black transition-colors duration-200">
-      <div className="absolute top-4 right-4 sm:block hidden">
-        <CustomConnectButton className="bg-zinc-900 text-white hover:bg-zinc-800" />
-      </div>
-
       <Card className="w-full max-w-md bg-zinc-900 border-zinc-800">
         <CardContent className="pt-6">
-          <div className="aspect-square overflow-hidden rounded-lg mb-4 relative">
+          <div className="aspect-square overflow-hidden rounded-lg mb-[25px] relative">
             <MediaRenderer
               client={client}
               className="w-full h-full object-cover"
@@ -89,8 +85,8 @@ export function NftMint(props: Props) {
             </div>
           </div>
 
-          <div className="sm:hidden block mb-4 pt-[50px]">
-            <CustomConnectButton className="bg-zinc-900 text-white hover:bg-zinc-800" />
+          <div className="mb-4">
+            <CustomConnectButton className="w-full bg-zinc-900 text-white hover:bg-zinc-800" />
           </div>
 
           <h2 className="text-2xl font-bold mb-2 text-white">
@@ -136,7 +132,7 @@ export function NftMint(props: Props) {
             <TransactionButton
               transaction={getClaimTransaction}
               style={{
-                backgroundColor: "#18181b",
+                backgroundColor: "#000000",
                 color: "white",
                 width: "100%",
                 borderColor: "#27272a",
@@ -150,7 +146,19 @@ export function NftMint(props: Props) {
               Mint {quantity} NFT{quantity > 1 ? "s" : ""}
             </TransactionButton>
           ) : (
-            <CustomConnectButton className="w-full bg-zinc-900 text-white hover:bg-zinc-800" />
+            <TransactionButton
+              transaction={getClaimTransaction}
+              style={{
+                backgroundColor: "#000000",
+                color: "white",
+                width: "100%",
+                borderColor: "#27272a",
+                borderWidth: "1px"
+              }}
+              disabled={true}
+            >
+              Connect Wallet to Mint
+            </TransactionButton>
           )}
         </CardFooter>
       </Card>
