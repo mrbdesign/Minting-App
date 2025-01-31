@@ -26,14 +26,9 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
     <ConnectButton
       client={client}
       wallets={wallets}
-      style={{
-        backgroundColor: "white",
-        color: "#0052FF",
-        border: "none",
-        width: "100%"
-      }}
+      className={className}
       theme={darkTheme({
-        colors: { 
+        colors: {
           modalBg: "hsl(228, 12%, 8%)",
           buttonBg: "white",
           buttonText: "#0052FF",
