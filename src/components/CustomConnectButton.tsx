@@ -45,17 +45,19 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
 
   // Render the ConnectButton with the custom theme and configuration
   return (
-    <ConnectButton
-      client={client}
-      wallets={wallets}
-      theme={customTheme}
-      connectModal={{
-        size: "compact",
-        title: "Let's Friggin' Go!",
-        showThirdwebBranding: false,
-        termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
-        privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
-      }}
-    />
+    <div className={className}>
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        theme={customTheme} // Use custom theme here
+        connectModal={{
+          size: "compact",
+          title: "Let's Friggin' Go!",
+          showThirdwebBranding: false,
+          termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
+          privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
+        }}
+      />
+    </div>
   );
 }
