@@ -23,28 +23,29 @@ interface CustomConnectButtonProps {
 
 export function CustomConnectButton({ className }: CustomConnectButtonProps) {
   return (
-    <ConnectButton
-      client={client}
-      wallets={wallets}
-      className={className}
-      theme={darkTheme({
-        colors: {
-          modalBg: "hsl(228, 12%, 8%)",
-          buttonBg: "white",
-          buttonText: "#0052FF",
-          accentText: "#0052FF"
-        },
-        fonts: {
-          family: "BasePixel-High"
-        }
-      })}
-      connectModal={{
-        size: "compact",
-        title: "Let's Friggin' Go !",
-        showThirdwebBranding: false,
-        termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
-        privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
-      }}
-    />
+    <div className={className}>
+      <ConnectButton
+        client={client}
+        wallets={wallets}
+        theme={darkTheme({
+          colors: {
+            modalBg: "hsl(228, 12%, 8%)",
+            buttonBg: "white",
+            buttonText: "#0052FF",
+            accentText: "#0052FF"
+          },
+          fonts: {
+            family: "BasePixel-High"
+          }
+        })}
+        connectModal={{
+          size: "compact",
+          title: "Let's Friggin' Go !",
+          showThirdwebBranding: false,
+          termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
+          privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
+        }}
+      />
+    </div>
   );
 }
