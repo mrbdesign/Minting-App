@@ -31,7 +31,6 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
     colors: {
       modalBg: "#FFFFFF",
       primaryText: "#000000",
-      walletSelectorButtonHoverBg: "#EEEEEE",
       separatorLine: "#FFFFFF",
       borderColor: "#EEEEEE",
       accentText: "#FFFFFF",
@@ -43,7 +42,7 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
     },
   });
 
-  // Render the ConnectButton with a custom theme and configuration
+  // Render the ConnectButton with the custom theme and configuration
   return (
     <div className={className}>
       <ConnectButton
