@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThirdwebProvider } from "thirdweb/react";
 import { Toaster } from "sonner";
 import { ToastProvider } from "@/components/ui/toast";
-
-const inter = Inter({ subsets: ["latin"] });
+import { basePixelFont } from "@/lib/fonts";
 
 export const metadata: Metadata = {
   title: "Glass Works",
@@ -22,7 +20,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={basePixelFont.className}>
         <ToastProvider>
           <Toaster position="bottom-center" />
           <ThirdwebProvider>{children}</ThirdwebProvider>

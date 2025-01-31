@@ -34,8 +34,8 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
       separatorLine: "#FFFFFF",
       borderColor: "#EEEEEE",
       accentText: "#FFFFFF",
-      buttonBg: "#000000",
-      buttonText: "#FFFFFF",
+      primaryButtonBg: "#000000", // Use valid property
+      primaryButtonText: "#FFFFFF", // Use valid property
     },
     fonts: {
       family: "BasePixel-High",
