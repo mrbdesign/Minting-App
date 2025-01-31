@@ -5,12 +5,10 @@ import { ConnectButton } from "thirdweb/react";
 import { darkTheme } from "thirdweb/react";
 import { createWallet } from "thirdweb/wallets";
 
-// Create the Thirdweb client
 const client = createThirdwebClient({
   clientId: "33348c96ab27f67e84ec697df5f583a8",
 });
 
-// Define wallets
 const wallets = [
   createWallet("io.metamask"),
   createWallet("com.coinbase.wallet"),
@@ -19,14 +17,11 @@ const wallets = [
   createWallet("io.zerion.wallet"),
 ];
 
-// Define props for the CustomConnectButton component
 interface CustomConnectButtonProps {
   className?: string;
 }
 
-// CustomConnectButton component
 export function CustomConnectButton({ className }: CustomConnectButtonProps) {
-  // Define a custom theme for the ConnectButton
   const customTheme = darkTheme({
     colors: {
       modalBg: "#FFFFFF",
@@ -34,21 +29,17 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
       separatorLine: "#FFFFFF",
       borderColor: "#EEEEEE",
       accentText: "#FFFFFF",
-      primaryButtonBg: "#000000", // Use valid property
-      primaryButtonText: "#FFFFFF", // Use valid property
-    },
-    fonts: {
-      family: "BasePixel-High",
+      primaryButtonBg: "#000000",
+      primaryButtonText: "#FFFFFF",
     },
   });
 
-  // Render the ConnectButton with the custom theme and configuration
   return (
     <div className={className}>
       <ConnectButton
         client={client}
         wallets={wallets}
-        theme={customTheme} // Use custom theme here
+        theme={customTheme}
         connectModal={{
           size: "compact",
           title: "Let's Friggin' Go!",
