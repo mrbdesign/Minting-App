@@ -19,25 +19,29 @@ const wallets = [
 
 interface CustomConnectButtonProps {
   className?: string;
+  style?: React.CSSProperties;
 }
 
-export function CustomConnectButton({ className }: CustomConnectButtonProps) {
+export function CustomConnectButton({ className, style }: CustomConnectButtonProps) {
+  const buttonTheme = darkTheme({
+    colors: {
+      modalBg: "hsl(228, 12%, 8%)",
+      buttonBg: "white",
+      buttonText: "#0052FF",
+      accentText: "#0052FF"
+    },
+    fonts: {
+      family: "BasePixel-High"
+    }
+  });
+
   return (
-    <div className={className}>
+    <div style={style}>
       <ConnectButton
         client={client}
         wallets={wallets}
-        theme={darkTheme({
-          colors: {
-            modalBg: "hsl(228, 12%, 8%)",
-            buttonBg: "white",
-            buttonText: "#0052FF",
-            accentText: "#0052FF"
-          },
-          fonts: {
-            family: "BasePixel-High"
-          }
-        })}
+        className={className}
+        theme={buttonTheme}
         connectModal={{
           size: "compact",
           title: "Let's Friggin' Go !",
