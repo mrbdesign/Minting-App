@@ -22,11 +22,13 @@ interface CustomConnectButtonProps {
 }
 
 export function CustomConnectButton({ className }: CustomConnectButtonProps) {
-  const buttonTheme = darkTheme({
+  const customTheme = darkTheme({
     colors: {
-      modalBg: "hsl(228, 12%, 8%)",
-      buttonBg: "white",
-      buttonText: "#0052FF",
+      modalBg: "#FFFFFF",
+      primaryText: "#0052FF",
+      walletSelectorButtonHoverBg: "#EEEEEE",
+      separatorLine: "#FFFFFF",
+      borderColor: "#EEEEEE",
       accentText: "#0052FF",
     },
     fonts: {
@@ -39,11 +41,11 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
       <ConnectButton
         client={client}
         wallets={wallets}
-        className="bg-white text-[#0052FF] border-none"
-        theme={buttonTheme}
+        className="custom-connect-button"
+        theme={customTheme}
         connectModal={{
           size: "compact",
-          title: "Let's Friggin' Go !",
+          title: "Let's Friggin' Go!",
           showThirdwebBranding: false,
           termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
           privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
