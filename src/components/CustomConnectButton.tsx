@@ -25,32 +25,31 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
   const customTheme = darkTheme({
     colors: {
       modalBg: "#FFFFFF",
-      primaryText: "#0052FF",
+      primaryText: "#000000",
       walletSelectorButtonHoverBg: "#EEEEEE",
       separatorLine: "#FFFFFF",
       borderColor: "#EEEEEE",
-      accentText: "#0052FF",
+      accentText: "#FFFFFF",
+      buttonBg: "#000000",
+      buttonText: "#FFFFFF"
     },
     fonts: {
-      family: "BasePixel-High",
-    },
+      family: "BasePixel-High"
+    }
   });
 
   return (
-    <div className={className}>
-      <ConnectButton
-        client={client}
-        wallets={wallets}
-        className="custom-connect-button"
-        theme={customTheme}
-        connectModal={{
-          size: "compact",
-          title: "Let's Friggin' Go!",
-          showThirdwebBranding: false,
-          termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
-          privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
-        }}
-      />
-    </div>
+    <ConnectButton
+      client={client}
+      wallets={wallets}
+      theme={customTheme}
+      connectModal={{
+        size: "compact",
+        title: "Let's Friggin' Go!",
+        showThirdwebBranding: false,
+        termsOfServiceUrl: "https://www.mrbriandesign.com/terms",
+        privacyPolicyUrl: "https://www.mrbriandesign.com/privacy",
+      }}
+    />
   );
 }
