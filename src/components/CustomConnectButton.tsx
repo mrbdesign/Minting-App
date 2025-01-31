@@ -43,7 +43,7 @@ export function CustomConnectButton({ className }: CustomConnectButtonProps) {
     },
   });
 
-  // Render the ConnectButton with the custom theme and configuration
+  // Render the ConnectButton with a custom theme and configuration
   return (
     <div className={className}>
       <ConnectButton
